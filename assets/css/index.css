@@ -1,3 +1,36 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    width: 100%;
+    height: 70px;
+    background-color: red;
+}
+
+header input{
+    border: none;
+    width: 250px;
+    height: 25px;
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+
+header input::placeholder{
+    font-size: 15px;
+}
+
+header input:focus::placeholder{
+    color: transparent;
+    border: none;
+}
+
 .container{
     padding: 50px 0px;
     display: flex;
@@ -8,7 +41,7 @@
 }
 
 .products{
-    border: 2px dotted black;
+    border: 2px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
