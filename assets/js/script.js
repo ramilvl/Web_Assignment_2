@@ -17,12 +17,12 @@ fetch("https://dummyjson.com/products")
       productsDiv.setAttribute("class", "products")
 
       productsDiv.innerHTML = `
-                <h2>${product.title}</h2>
-                <p>Price: ${product.price}</p>
-                <p>Discount: ${product.discountPercentage}%</p>
-                <p>Category: ${product.category}</p>
-                <p>Stock: ${product.stock}</p>
                 <img src="${thumbnailEl}" alt="${product.title}" />
+                <h2>${product.title}</h2>
+                <p class="color-666">Price: ${product.price}</p>
+                <p class="color-666">Discount: ${product.discountPercentage}%</p>
+                <p class="color-666">Category: ${product.category}</p>
+                <p class="color-666">Stock: ${product.stock}</p>
             `;
 
         containerDiv.appendChild(productsDiv);
