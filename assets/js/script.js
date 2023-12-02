@@ -4,12 +4,27 @@ fetch("https://dummyjson.com/products")
   .then((res) => res.json())
   .then((json) => {
     data = json.products;
+    showCategory(data);
     displayProducts(data);
   })
   .catch((err) => console.error("Error happened while fetching data:", err));
 
+
+function showCategory(products) {
+  const categorySelect = document.getElementById("categoryFilter");
+
+  const categories = [...new Set(products.map(product => product.category))];
+
+  categories.forEach((category) => {
+    const option = document.createElement("option");
+    option.value = category;
+    option.textContent = category;
+    categorySelect.appendChild(option);
+  });
+}
+
 function displayProducts(products) {
-  const containerDiv = document.getElementsByClassName("container")[0];
+  const containerDiv = document.querySelector(".container");
   containerDiv.innerHTML = "";
 
   products.forEach((product) => {

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
-    <script src="./assets/js/script.js"></script>
     <link rel="stylesheet" href="./assets/css/index.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -16,15 +15,17 @@
                 <button class="btn" onclick="search()"><span class="text-size-15px font-poppins">Search</span></button>
             </div>
             <div class="filter">
-                <select class="select b-r-6px" name="" id="">
+                <select class="select b-r-6px" id="categoryFilter">
                     <option value="">Choose Category</option>
                 </select>
-                <button class="btn"><span class="text-size-15px font-poppins">Filter</span></button>
+                <button class="btn" onclick="filterByCategory()"><span class="text-size-15px font-poppins">Filter</span></button>
             </div>
         </div>
     </header>
     
     <div class="container">
     </div>
+
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
