@@ -22,6 +22,20 @@ function showCategory(products) {
     categorySelect.appendChild(option);
   });
 }
+function filterCategory() {
+  const selectedCategory = document.getElementById("categoryFilter").value;
+  const keyword = document.getElementById("searchInput").value.toLowerCase();
+
+  const filteredProducts = data.filter(
+    (product) =>
+      (selectedCategory === "" || product.category === selectedCategory) &&
+      (product.title.toLowerCase().includes(keyword) ||
+      product.description.toLowerCase().includes(keyword) ||
+      product.category.toLowerCase().includes(keyword))
+  );
+
+  displayProducts(filteredProducts);
+}
 
 function displayProducts(products) {
   const containerDiv = document.querySelector(".container");
