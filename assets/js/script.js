@@ -56,6 +56,7 @@ function displayProducts(products) {
                     <p class="color-666">Discount: ${product.discountPercentage}%</p>
                     <p class="color-666">Category: ${product.category}</p>
                     <p class="color-666">Stock: ${product.stock}</p>
+                    <button>More Details</button>
                 `;
 
     containerDiv.appendChild(productsDiv);
