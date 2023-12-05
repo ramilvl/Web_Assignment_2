@@ -6,6 +6,7 @@ fetch("https://dummyjson.com/products")
     data = json.products;
     showCategory(data);
     showProduct(data);
+    localStorage.setItem('productData', JSON.stringify(data));
   });
 
 
