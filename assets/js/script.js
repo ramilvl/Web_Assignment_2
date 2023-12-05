@@ -5,43 +5,30 @@ fetch("https://dummyjson.com/products")
   .then((json) => {
     data = json.products;
     showCategory(data);
-    displayProducts(data);
-  })
-  .catch((err) => console.error("Error happened while fetching data:", err));
+    showProduct(data);
+  });
 
 
 function showCategory(products) {
-  const categorySelect = document.getElementById("categoryFilter");
+  const categorySelect = document.getElementById("chooseCategory");
 
-  const categories = [...new Set(products.map(product => product.category))];
+  const categories = [...new Set(products.map((product) => product.category))];
 
   categories.forEach((category) => {
     const option = document.createElement("option");
+
     option.value = category;
     option.textContent = category;
+    
     categorySelect.appendChild(option);
   });
 }
-function filterCategory() {
-  const selectedCategory = document.getElementById("categoryFilter").value;
-  const keyword = document.getElementById("searchInput").value.toLowerCase();
 
-  const filteredProducts = data.filter(
-    (product) =>
-      (selectedCategory === "" || product.category === selectedCategory) &&
-      (product.title.toLowerCase().includes(keyword) ||
-      product.description.toLowerCase().includes(keyword) ||
-      product.category.toLowerCase().includes(keyword))
-  );
+function showProduct(products) {
+  const div_container = document.querySelector(".container");
+  div_container.innerHTML = "";
 
-  displayProducts(filteredProducts);
-}
-
-function displayProducts(products) {
-  const containerDiv = document.querySelector(".container");
-  containerDiv.innerHTML = "";
-
-  products.forEach((product) => {
+  products.forEach((product, index) => {
     let thumbnailEl = product.images.filter((link) =>
       link.includes("thumbnail")
     );
@@ -50,27 +37,34 @@ function displayProducts(products) {
     const productsDiv = document.createElement("div");
     productsDiv.setAttribute("class", "products");
     productsDiv.innerHTML = `
-                    <img src="${thumbnailEl}" alt="${product.title}" />
-                    <h2>${product.title}</h2>
-                    <p class="color-666">Price: ${product.price}</p>
-                    <p class="color-666">Discount: ${product.discountPercentage}%</p>
-                    <p class="color-666">Category: ${product.category}</p>
-                    <p class="color-666">Stock: ${product.stock}</p>
-                    <button>More Details</button>
-                `;
+          <img src="${thumbnailEl}"/>
+          <h2 class="font-poppins">${product .title}</h2>
+          <p class="color-666 font-poppins">Price: ${product.price}</p>
+          <p class="color-666 font-poppins">Discount: ${product.discountPercentage}%</p>
+          <p class="color-666 font-poppins">Category: ${product.category}</p>
+          <p class="color-666 font-poppins">Stock: ${product.stock}</p>
+          <button class="btn-details" onclick="openProducts(${index})"><span class="color-white">Detail</span></button>
+      `;
 
-    containerDiv.appendChild(productsDiv);
+      div_container.appendChild(productsDiv);
   });
 }
 
-function search() {
-  const keyword = document.getElementById("searchInput").value.toLowerCase();
-  const filteredProducts = data.filter(
-    (product) =>
-      product.title.toLowerCase().includes(keyword) ||
-      product.description.toLowerCase().includes(keyword) ||
-      product.category.toLowerCase().includes(keyword)
-  );
+function filter() {
+  const categorySelection = document.getElementById("chooseCategory").value;
+  const result = data.filter((product)=>categorySelection == "" || product.category == categorySelection);
+  showProduct(result);
+}
 
-  displayProducts(filteredProducts);
+function search() {
+  const word = document.getElementById("searchProduct").value.toLowerCase();
+  const result = data.filter((product) =>product.title.toLowerCase().includes(word) || product.description.toLowerCase().includes(word) ||
+  product.category.toLowerCase().includes(word)
+  );
+  showProduct(result);
+}
+
+function openProducts(index) {
+  const url = `product.html?index=${index}`;
+  window.location.href = url;
 }

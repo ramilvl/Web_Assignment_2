@@ -1,5 +1,9 @@
-.text-size-15px{
+.text-size-17px{
     font-size: 17px;
+}
+
+.text-size-30px{
+    font-size: 30px;
 }
 
 .b-r-6px{
@@ -9,3 +13,12 @@
 .color-666{
     color: #666;
 }
+
+.color-white{
+    color: white;
+}
+
+.text-align{
+    text-align: center;
+}
+

@@ -1,0 +1,36 @@
+.container{
+    padding: 15px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.productDetails{
+    width: 500px;
+    border: 2px solid black;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.goBack{
+    width: 150px;
+    height: 50px;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.goBack:hover{
+    background-color: orange;
+}
+
+.imgPlace{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 20px;
+}
